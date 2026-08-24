@@ -14,6 +14,9 @@ A Streamlit app for interactive exploratory data analysis of the classic Iris fl
 
 ## Setup
 
+
+
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -27,3 +30,6 @@ streamlit run app.py
 ## Data
 
 `data/iris.csv` — 150 measurements (sepal length/width, petal length/width) across three species: *setosa*, *versicolor*, *virginica*.
+
+<img width="1920" height="1200" alt="Screenshot From 2026-08-23 23-29-25" src="https://github.com/user-attachments/assets/f341c833-2eb0-44e4-a5f9-ec5d81faa083" />
+<img width="1920" height="1200" alt="Screenshot From 2026-08-23 23-29-17" src="https://github.com/user-attachments/assets/4dde6325-181b-4302-92a6-61e091e95206" />
