@@ -1,35 +1,36 @@
-# Iris EDA
+# CineExplore
 
-A Streamlit app for interactive exploratory data analysis of the classic Iris flower dataset (Fisher, 1936).
+A Next.js + shadcn/ui application for exploring the [TMDB 5000 Movies](data/tmdb_5000_movies.csv) dataset — 4,800+ movies with budgets, revenue, ratings, genres, and more.
 
 ## Features
 
-- **Sidebar filters** — filter by species and by feature value ranges, with a button to download the filtered data as CSV.
-- **Overview** — dataset snapshot, class balance, descriptive statistics, and data types.
-- **Univariate** — histograms, box plots, violin plots, and KDE plots for a single feature, split by species.
-- **Bivariate** — scatter plots with trendlines, Pearson/Spearman/Kendall correlation heatmaps.
-- **Multivariate** — scatter matrix, parallel coordinates, and 3D scatter plots.
-- **Statistical tests** — one-way ANOVA, Shapiro–Wilk normality tests, and pairwise correlation significance.
-- **Raw data** — filtered table view with duplicate row detection.
+- **Dashboard** (`/`) — summary stats, top genres, releases per year, rating distribution, and a budget-vs-revenue chart.
+- **Explore** (`/explore`) — a searchable, filterable, sortable table of every movie. Filter by genre, release year range, and minimum rating; sort by popularity, rating, revenue, budget, profit, runtime, or title. Click any row for full details in a side panel.
+- Server-side filtering/pagination via `/api/movies`, so the client never has to download the whole dataset.
 
-## Setup
-
-
-
+## Getting started
 
 ```bash
-pip install -r requirements.txt
+npm install
+npm run dev
 ```
 
-## Run
+Open [http://localhost:3000](http://localhost:3000).
+
+## Regenerating the dataset
+
+The app reads from the pre-built `src/data/movies.json`. To rebuild it from the raw CSV (e.g. after editing `data/tmdb_5000_movies.csv`):
 
 ```bash
-streamlit run app.py
+python3 scripts/build_data.py
 ```
 
-## Data
+## Tech stack
 
-`data/iris.csv` — 150 measurements (sepal length/width, petal length/width) across three species: *setosa*, *versicolor*, *virginica*.
+- [Next.js](https://nextjs.org) (App Router)
+- [shadcn/ui](https://ui.shadcn.com) (Base UI primitives) + Tailwind CSS v4
+- [Recharts](https://recharts.org) for charts
 
-<img width="1920" height="1200" alt="Screenshot From 2026-08-23 23-29-25" src="https://github.com/user-attachments/assets/f341c833-2eb0-44e4-a5f9-ec5d81faa083" />
-<img width="1920" height="1200" alt="Screenshot From 2026-08-23 23-29-17" src="https://github.com/user-attachments/assets/4dde6325-181b-4302-92a6-61e091e95206" />
+## Deploy on Vercel
+
+This is a standard Next.js app — push it to a Git repo and [import it on Vercel](https://vercel.com/new). No environment variables are required; the dataset ships as a static JSON file.
